@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  fish_at: 2020-09-06 23:00:59
+  fish_name: MyString
+  size: 9.99
+  weight: 9.99
+  count: MyString
+  photo: MyString
+  place: MyString
+  place_detail: MyString
+  diary_latitude: 1.5
+  diary_longitude: 1.5
+  area: MyString
+  range: MyString
+  tackle_action: MyString
+  speed: MyString
+  situation: MyText
+  diary_note: MyText
+  publish: MyString
+
+two:
+  title: MyString
+  fish_at: 2020-09-06 23:00:59
+  fish_name: MyString
+  size: 9.99
+  weight: 9.99
+  count: MyString
+  photo: MyString
+  place: MyString
+  place_detail: MyString
+  diary_latitude: 1.5
+  diary_longitude: 1.5
+  area: MyString
+  range: MyString
+  tackle_action: MyString
+  speed: MyString
+  situation: MyText
+  diary_note: MyText
+  publish: MyString

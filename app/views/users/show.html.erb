@@ -1,0 +1,19 @@
+<%= provide(:title, @user.name) %>
+<div class="col-md-10 col-md-offset-1">
+  <table class="table table-bordered table-hover fish-diary-index">
+    <thead>
+      <tr>
+        <th><%= Diary.human_attribute_name :title %></th>
+        <th><%= Diary.human_attribute_name :fished_at %></th>
+        <th><%= Diary.human_attribute_name :fish_name %></th>
+        <th><%= Diary.human_attribute_name :place %><th>
+      </tr>
+    </thead>
+
+    <% @diaries.each do |diary| %>
+      <tr>
+        <td><%= link_to  diary.title, diary %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
