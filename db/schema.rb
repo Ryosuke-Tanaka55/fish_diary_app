@@ -31,15 +31,17 @@ ActiveRecord::Schema.define(version: 2020_09_06_140059) do
     t.text "situation"
     t.text "diary_note"
     t.string "publish"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "tel"
-    t.string "prefecture"
+    t.integer "prefecture"
     t.string "image"
     t.string "main_genre1"
     t.string "main_genre2"
@@ -52,4 +54,5 @@ ActiveRecord::Schema.define(version: 2020_09_06_140059) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "diaries", "users"
 end

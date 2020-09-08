@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :name, presence: true
       t.string :email, presence: true
       t.string :tel
-      t.string :prefecture
+      t.integer :prefecture, presence: true
       t.string :image
       t.string :main_genre1
       t.string :main_genre2

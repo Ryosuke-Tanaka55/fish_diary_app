@@ -37,6 +37,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_hash (3.1.0)
+      activesupport (>= 5.0.0)
     activejob (6.0.3)
       activesupport (= 6.0.3)
       globalid (>= 0.3.6)
@@ -212,6 +214,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  active_hash
   bcrypt
   bootsnap (>= 1.4.2)
   bootstrap-sass
