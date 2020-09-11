@@ -13,7 +13,7 @@ class User < ApplicationRecord
   VALID_TEL_REGEX = /\A\d{10}$|^\d{11}\z/
   validates :tel, format: { with: VALID_TEL_REGEX }, allow_nil: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # 都道府県選択
   enum prefecture: {
@@ -58,7 +58,7 @@ class User < ApplicationRecord
 
   # ユーザーのログイン情報を破棄する。
   def forget
-    update_attributes(:remember_digest, nil)
+    update_attribute(:remember_digest, nil)
   end
 
 end
