@@ -70,7 +70,7 @@ class UsersController < ApplicationController
     # アクセスしたユーザーが現在ログインしているユーザーか確認
     def correct_user
       @user = User.find(params[:id])
-      if current_user?(@user)
+      unless current_user?(@user)
         flash[:danger] = "他のユーザー情報は閲覧できません。"
         redirect_to root_url
       end
