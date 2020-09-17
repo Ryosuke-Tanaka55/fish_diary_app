@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      diary: 記録
     attributes:
         user:
           id: ID
@@ -18,3 +19,22 @@ ja:
           password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
+        diary:
+          title: タイトル
+          fished_at: 釣行日時
+          fish_name: 魚種
+          size: サイズ
+          weight: 重さ
+          count: 匹数
+          photo: 釣果写真
+          place: 釣行場所
+          place_detail: 釣行場所詳細
+          daiary_latitude: 緯度
+          daiary_longitude: 経度
+          area: エリア
+          range: レンジ
+          tackle_action: アクション
+          speed: リーリングスピード
+          situation: 状況説明
+          diary_note: 備考
+          publish: 公開範囲

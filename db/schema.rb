@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_133300) do
+ActiveRecord::Schema.define(version: 2020_09_13_140225) do
 
   create_table "diaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "title"
@@ -37,6 +37,51 @@ ActiveRecord::Schema.define(version: 2020_09_10_133300) do
     t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
+  create_table "environments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "weather"
+    t.decimal "temperature", precision: 10
+    t.decimal "wind_speed", precision: 10
+    t.string "tide"
+    t.string "tide_current"
+    t.decimal "water_temperature", precision: 10
+    t.string "water_quality"
+    t.bigint "diary_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["diary_id"], name: "index_environments_on_diary_id"
+  end
+
+  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "genre"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_genres_on_user_id"
+  end
+
+  create_table "rigs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "rig"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_rigs_on_user_id"
+  end
+
+  create_table "tackles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "rod"
+    t.string "reel"
+    t.string "line"
+    t.string "leader"
+    t.string "lure"
+    t.string "color"
+    t.string "bait"
+    t.string "hook"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tackles_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -56,4 +101,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_133300) do
   end
 
   add_foreign_key "diaries", "users"
+  add_foreign_key "environments", "diaries"
+  add_foreign_key "genres", "users"
+  add_foreign_key "rigs", "users"
+  add_foreign_key "tackles", "users"
 end

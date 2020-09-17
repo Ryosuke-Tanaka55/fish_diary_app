@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weather: MyString
+  temperature: 9.99
+  wind_speed: 9.99
+  tide: MyString
+  tide_current: MyString
+  water_temperature: 9.99
+  water_quality: MyString
+  diary: one
+
+two:
+  weather: MyString
+  temperature: 9.99
+  wind_speed: 9.99
+  tide: MyString
+  tide_current: MyString
+  water_temperature: 9.99
+  water_quality: MyString
+  diary: two

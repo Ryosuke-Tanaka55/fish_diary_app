@@ -1,19 +1,24 @@
 <%= provide(:title, @user.name) %>
-<div class="col-md-10 col-md-offset-1">
-  <table class="table table-bordered table-hover fish-diary-index">
-    <thead>
-      <tr>
-        <th><%= Diary.human_attribute_name :title %></th>
-        <th><%= Diary.human_attribute_name :fished_at %></th>
-        <th><%= Diary.human_attribute_name :fish_name %></th>
-        <th><%= Diary.human_attribute_name :place %><th>
-      </tr>
-    </thead>
 
-    <% @diaries.each do |diary| %>
-      <tr>
-        <td><%= link_to  diary.title, diary %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+<% if @user.admin? %>
+  <h1><%= @user.name %>画面</h1>
+<% else %>
+  <h1><%= @user.name %>さんの釣行記録</h1>
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-bordered table-hover fish-diary-index">
+      <thead>
+        <tr>
+          <th><%= Diary.human_attribute_name :title %></th>
+          <th><%= Diary.human_attribute_name :fished_at %></th>
+          <th><%= Diary.human_attribute_name :fish_name %></th>
+          <th><%= Diary.human_attribute_name :place %><th>
+        </tr>
+      </thead>
+<% end %>
+      <% @diaries.each do |diary| %>
+        <tr>
+          <td><%= link_to  diary.title, diary %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>

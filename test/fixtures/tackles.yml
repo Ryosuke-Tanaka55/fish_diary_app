@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rod: MyString
+  reel: MyString
+  line: MyString
+  leader: MyString
+  lure: MyString
+  color: MyString
+  bait: MyString
+  hook: MyString
+  user: one
+
+two:
+  rod: MyString
+  reel: MyString
+  line: MyString
+  leader: MyString
+  lure: MyString
+  color: MyString
+  bait: MyString
+  hook: MyString
+  user: two
