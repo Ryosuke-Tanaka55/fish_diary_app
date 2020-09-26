@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'rigs/new'
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -10,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      # リグ
-      resources :rigs
+      
     end
+      # リグ
+      resources :rigs, :except => :show
   end
- 
 end

@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: @user, local: true) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/model_error_messages', model: f.object %>
       
       <%= f.label :name %>
       <%= f.label :必須, class: "form-require" %>
@@ -27,7 +27,7 @@
       <%= f.label :必須, class: "form-require" %>
       <%= f.password_field :password, class: "form-control" %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "パスワード再確認" %>
       <%= f.label :必須, class: "form-require" %>
       <%= f.password_field :password_confirmation, class: "form-control" %>
 

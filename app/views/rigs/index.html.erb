@@ -1,0 +1,32 @@
+<% provide(:title, 'リグ一覧') %>
+<% provide(:class_text, "rig--index") %>
+<% provide(:button_text, "編集") %>
+
+<h1><%= current_user.name %>のリグ一覧</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= link_to "リグ新規登録", new_user_rig_path(current_user), class: "btn btn-lg btn-primary pull-right" %>
+    <table class="table table-hover" id="table-rigs">
+      <thead>
+        <tr>
+          <th><%= Rig.human_attribute_name :rig %></th>
+        </tr>
+      </thead>
+    
+      <% @rigs.each do |rig| %>
+        <tr>
+          <td><%= rig.rig %></td>
+          <td align="center">
+            <%= link_to "編集", "#", class: "btn btn btn-success" %>
+            <%= link_to "削除", user_rig_path(current_user, rig.id), method: :delete, 
+              data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="center">
+      <%= link_to "戻る", user_path(current_user), class: "btn btn-default" %>
+    </div>
+  </div>
+</div>

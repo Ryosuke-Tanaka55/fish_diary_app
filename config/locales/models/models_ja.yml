@@ -3,6 +3,9 @@ ja:
     models:
       user: ユーザー
       diary: 記録
+      rig: リグ
+      tackle: タックル
+      genre: ジャンル
     attributes:
         user:
           id: ID
@@ -11,12 +14,12 @@ ja:
           tel: 電話番号
           prefecture: 都道府県
           password: パスワード
+          password_confirmation: パスワード再入力
           image: プロフィール画像
           main_genre1: 主にする釣りのジャンル1
           main_genre2: 主にする釣りのジャンル2
           main_genre3: 主にする釣りのジャンル3
           introduction: 自己紹介
-          password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
         diary:
@@ -38,3 +41,16 @@ ja:
           situation: 状況説明
           diary_note: 備考
           publish: 公開範囲
+        rig:
+          rig: リグ
+        tackle:
+          rod: ロッド
+          reel: リール
+          line: ライン
+          leader: リーダー
+          lure: ルアー
+          color: カラー
+          bait: エサ
+          hook: フック
+        genre:
+          genre:ジャンル

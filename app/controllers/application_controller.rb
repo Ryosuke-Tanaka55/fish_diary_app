@@ -27,6 +27,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # アクセスしたユーザーが現在ログインしているユーザーか確認（user_id）
+  def correct_user_id
+    @user = User.find(params[:user_id])
+  end
+
   # システム管理者かどうか判定
   def admin_user
     unless current_user.admin?

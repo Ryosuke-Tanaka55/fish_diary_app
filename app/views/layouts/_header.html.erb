@@ -47,8 +47,8 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "タックル一覧", "#" %></li>
                 <li><%= link_to "タックル登録", "#" %></li>
-                <li><%= link_to "リグ一覧", "#" %></li>
-                <li><%= link_to "リグ登録", new_rig_path(current_user) %></li>
+                <li><%= link_to "リグ一覧", user_rigs_path(current_user) %></li>
+                <li><%= link_to "リグ登録", new_user_rig_path(current_user) %></li>
                 <li><%= link_to "ジャンル一覧", "#" %></li>
                 <li><%= link_to "ジャンル登録", "#" %></li>
               </ul>
@@ -62,7 +62,7 @@
               <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
               <li><%= link_to "ジャンル登録", "#" %></li>
               <li><%= link_to "タックル登録", "#" %></li>
-              <li><%= link_to "リグ登録", new_rig_path(current_user) %></li>
+              <li><%= link_to "リグ登録", new_user_rig_path(current_user) %></li>
               <li class="divider"></li>
               <li>
                 <%= link_to  "ログアウト", logout_path, method: :delete %>
