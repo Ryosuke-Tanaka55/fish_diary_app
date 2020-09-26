@@ -1,0 +1,2 @@
+class ReelsController < ApplicationController
+end

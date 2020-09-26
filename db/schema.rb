@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_061730) do
 
   create_table "hooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "hook"
+    t.string "hook_maker"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_061730) do
 
   create_table "leaders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "leader"
+    t.string "leader_maker"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -93,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_061730) do
 
   create_table "lines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "line"
+    t.string "line_maker"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -101,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_061730) do
 
   create_table "lures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "lure"
+    t.string "lure_maker"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -109,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_061730) do
 
   create_table "reels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "reel"
+    t.string "reel_maker"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -125,6 +130,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_061730) do
 
   create_table "rods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "rod"
+    t.string "rod_maker"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

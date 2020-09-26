@@ -16,7 +16,7 @@ class RigsController < ApplicationController
     @form = Form::RigCollection.new(rig_collection_params)
     if @form.save
       flash[:success] = "#{@form.target_rigs.size}件のリグを登録しました。"
-      redirect_to user_url(current_user)
+      redirect_to user_rigs_path(current_user)
     else
       flash.now[:danger] = "新規登録に失敗しました。"
       render:new
@@ -60,17 +60,7 @@ class RigsController < ApplicationController
     end
 
   # beforeアクション
-    def set_user_id
-      @user = User.find(params[:user_id])
-    end
-
     def set_rig
       @rig = Rig.find(params[:id])
-    end
-
-    def set_current_user
-      @user = current_user
-    end
-
-    
+    end    
 end

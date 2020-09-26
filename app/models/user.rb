@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :diaries, dependent: :destroy
   has_many :rigs, dependent: :destroy
-  accepts_nested_attributes_for :rigs
+  accepts_nested_attributes_for :rigs, allow_destroy: true
   has_many :rods, dependent: :destroy
   has_many :reels, dependent: :destroy
   has_many :lines, dependent: :destroy

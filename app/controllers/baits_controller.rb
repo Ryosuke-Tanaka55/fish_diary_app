@@ -1,0 +1,2 @@
+class BaitsController < ApplicationController
+end

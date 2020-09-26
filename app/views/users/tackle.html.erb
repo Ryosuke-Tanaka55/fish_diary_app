@@ -1,0 +1,15 @@
+<% provide(:title, 'All Tackles') %>
+<h1>タックル一覧</h1>
+<p>登録・編集するタックルを選択してください。</p>
+<div class="col-md-10 col-md-offset-1" >
+  <ul class="list-group">
+    <li><%= link_to "ロッド", user_rods_path(current_user) %></li>
+    <li><%= link_to "リール", user_reels_path(current_user) %></li>
+    <li><%= link_to "ライン", user_lines_path(current_user) %></li>
+    <li><%= link_to "リーダー", user_leaders_path(current_user) %></li>
+    <li><%= link_to "ルアー", user_lures_path(current_user) %></li>
+    <li><%= link_to "カラー", user_colors_path(current_user) %></li>
+    <li><%= link_to "エサ", user_bait_path(current_user) %></li>
+    <li><%= link_to "フック",user_hooks_path(current_user) %></li>
+  </ul>
+</div>

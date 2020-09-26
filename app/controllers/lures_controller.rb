@@ -1,0 +1,2 @@
+class LuresController < ApplicationController
+end

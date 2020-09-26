@@ -5,8 +5,8 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @form, url: user_rigs_path(@user.id), method: :post, local: true) do |f| %>
-      <%= render 'form_error_messages', model: @form %>  
+    <%= form_with(model: @form, url: user_rigs_path(current_user), method: :post, local: true) do |f| %>
+      <%= render 'shared/form_error_messages', model: @form %>  
       <table class="table table-bordered">
         <tbody class="bulk-registration-form">
         <%= f.fields_for :rigs do |i| %>

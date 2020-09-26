@@ -9,9 +9,17 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      
+      get 'tackle'
     end
-      # リグ
+      # リグ・タックル
       resources :rigs, :except => :show
+      resources :rods, :except => :show
+      resources :reels, :except => :show
+      resources :lines, :except => :show
+      resources :leaders, :except => :show
+      resources :lures, :except => :show
+      resources :colors, :except => :show
+      resources :baits, :except => :show
+      resources :hooks, :except => :show
   end
 end

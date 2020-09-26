@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
     @user = User.find(params[:id])
   end
 
+  # paramsハッシュからユーザー情報を取得する。
+  def set_user_id
+    @user = User.find(params[:user_id])
+  end
+
+  # @userに現在ログインしているユーザーをセットする。
+  def set_current_user
+    @user = current_user
+  end
+
   # ログイン済みのユーザーか確認
   def logged_in_user
     unless logged_in?
