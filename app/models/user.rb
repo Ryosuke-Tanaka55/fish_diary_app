@@ -2,7 +2,14 @@ class User < ApplicationRecord
   has_many :diaries, dependent: :destroy
   has_many :rigs, dependent: :destroy
   accepts_nested_attributes_for :rigs
-  has_many :tackles, dependent: :destroy
+  has_many :rods, dependent: :destroy
+  has_many :reels, dependent: :destroy
+  has_many :lines, dependent: :destroy
+  has_many :leaders, dependent: :destroy
+  has_many :lures, dependent: :destroy
+  has_many :colors, dependent: :destroy
+  has_many :baits, dependent: :destroy
+  has_many :hooks, dependent: :destroy
   has_many :genres, dependent: :destroy
 
   # 「remember_token」という仮想の属性を作成。

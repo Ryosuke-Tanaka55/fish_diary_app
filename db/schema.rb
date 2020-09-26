@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_140225) do
+ActiveRecord::Schema.define(version: 2020_09_26_061730) do
+
+  create_table "baits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "bait"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_baits_on_user_id"
+  end
+
+  create_table "colors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "color"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_colors_on_user_id"
+  end
 
   create_table "diaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "title"
@@ -59,6 +75,46 @@ ActiveRecord::Schema.define(version: 2020_09_13_140225) do
     t.index ["user_id"], name: "index_genres_on_user_id"
   end
 
+  create_table "hooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "hook"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_hooks_on_user_id"
+  end
+
+  create_table "leaders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "leader"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_leaders_on_user_id"
+  end
+
+  create_table "lines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "line"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_lines_on_user_id"
+  end
+
+  create_table "lures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "lure"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_lures_on_user_id"
+  end
+
+  create_table "reels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "reel"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reels_on_user_id"
+  end
+
   create_table "rigs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "rig"
     t.bigint "user_id", null: false
@@ -67,19 +123,12 @@ ActiveRecord::Schema.define(version: 2020_09_13_140225) do
     t.index ["user_id"], name: "index_rigs_on_user_id"
   end
 
-  create_table "tackles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "rods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "rod"
-    t.string "reel"
-    t.string "line"
-    t.string "leader"
-    t.string "lure"
-    t.string "color"
-    t.string "bait"
-    t.string "hook"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_tackles_on_user_id"
+    t.index ["user_id"], name: "index_rods_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -100,9 +149,16 @@ ActiveRecord::Schema.define(version: 2020_09_13_140225) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "baits", "users"
+  add_foreign_key "colors", "users"
   add_foreign_key "diaries", "users"
   add_foreign_key "environments", "diaries"
   add_foreign_key "genres", "users"
+  add_foreign_key "hooks", "users"
+  add_foreign_key "leaders", "users"
+  add_foreign_key "lines", "users"
+  add_foreign_key "lures", "users"
+  add_foreign_key "reels", "users"
   add_foreign_key "rigs", "users"
-  add_foreign_key "tackles", "users"
+  add_foreign_key "rods", "users"
 end
