@@ -5,18 +5,18 @@ class RodsController < ApplicationController
   before_action :correct_user_id
 
   def index
-    @rods = Rod.all
+    @rods = current_user.rods
   end
 
   def new
-    @form = Form::RodCollection.new
+    @rods = RodCollection.new
   end
 
   def create
-    @form = Form::RodCollection.new(rod_collection_params)
-    if @form.save
-      flash[:success] = "#{@form.target_rods.size}件のロッドを登録しました。"
-      redirect_to user_rods_path(current_user)
+    @rods = RodCollection.new(rods_params)
+    if @rods.save
+      flash[:success] = "ロッドを登録しました。"
+      redirect_to user_rods_url(current_user)
     else
       flash.now[:danger] = "新規登録に失敗しました。"
       render:new
@@ -32,7 +32,11 @@ class RodsController < ApplicationController
     # ストロングパラメーター
     def rod_collection_params
       params
-        .require(:form_rod_collection)
-        .permit(rods_attributes: :rod)
+        .require(:rod_collection)
+        .permit(rods_attributes: :rods)
+    end
+
+    def rods_params
+      params.require(:rods)
     end
 end

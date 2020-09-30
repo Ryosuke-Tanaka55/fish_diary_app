@@ -4,20 +4,22 @@
 <h1>ロッド新規登録</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @form, url: user_rods_path(current_user), method: :post, local: true) do |f| %>
-      <%= render 'shared/form_error_messages', model: @form %>   
+  <div class="col-md-10 col-md-offset-2">
+    <%= form_with(model: @rods, url: user_rods_path(current_user), method: :post, local: true) do |f| %>
+      <%= render 'shared/model_error_messages', model: @rods %>   
       <table class="table table-bordered">
         <tbody class="bulk-registration-form">
         <tr>
           <th>ロッド</th>
           <th>メーカー</th>
         </tr>
-        <%= f.fields_for :rods do |i| %>
-        <tr class="item">
-          <td><%= i.text_field :rod, placeholder: "例.19 エクスセンス ジェノス S110MHR", class: "form-control" %></td>
-          <td><%= i.text_field :rod_maker, placeholder: "例.シマノ", class: "form-control" %></td>
-        </tr>
+        <% @rods.collection.each do |rod| %>
+          <%= fields_for 'rods[]', rod do |i| %>
+          <tr class="item">
+            <td><%= i.text_field :rod, placeholder: "例.19 エクスセンス ジェノス S110MHR", class: "form-control" %></td>
+            <td><%= i.text_field :rod_maker, placeholder: "例.シマノ", class: "form-control" %></td>
+          </tr>
+          <% end %>
         <% end %>
         </tbody>
       </table>

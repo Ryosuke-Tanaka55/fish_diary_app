@@ -1,0 +1,30 @@
+<% provide(:title, 'Line regist') %>
+<% provide(:class_text, 'ライン') %>
+<% provide(:button_text, '新規登録') %>
+<h1>ライン新規登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @form, url: user_lines_path(current_user), method: :post, local: true) do |f| %>
+      <%= render 'shared/form_error_messages', model: @form %>   
+      <table class="table table-bordered">
+        <tbody class="bulk-registration-form">
+        <tr>
+          <th>ライン</th>
+          <th>メーカー</th>
+        </tr>
+        <%= f.fields_for :rods do |i| %>
+        <tr class="item">
+          <td><%= i.text_field :line, placeholder: "例.シーガー R18 完全シーバス ステルスグレー 0.8号", class: "form-control" %></td>
+          <td><%= i.text_field :line_maker, placeholder: "例.クレハ合繊", class: "form-control" %></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="center">
+        <%= f.submit "一括登録", class: "btn btn-primary" %>
+        <%= link_to "戻る", user_lines_path(current_user), class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>

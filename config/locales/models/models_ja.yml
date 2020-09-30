@@ -43,14 +43,27 @@ ja:
           publish: 公開範囲
         rig:
           rig: リグ
-        tackle:
+        rod:
           rod: ロッド
+          rod_maker: メーカー
+        reel:
           reel: リール
+          reel_maker: メーカー
+        line:
           line: ライン
+          line_maker: メーカー
+        leader:
           leader: リーダー
+          leader_maker: メーカー
+        lure:
           lure: ルアー
+          lure_maker: メーカー
+        color:
           color: カラー
+        bait:
           bait: エサ
+        hook:
           hook: フック
+          hook_maker: メーカー
         genre:
           genre:ジャンル

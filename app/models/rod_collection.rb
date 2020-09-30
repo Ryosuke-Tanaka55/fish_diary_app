@@ -7,19 +7,21 @@ class RodCollection
   FORM_COUNT = 5
   attr_accessor :collection
 
+  # 初期化メソッド
   def initialize(attributes = [])
     if attributes.present?
       self.collection = attributes.map do |value|
         Rod.new(
-          rod: value['rod']
+          rod: value['rod'],
           rod_maker: value['rod_maker']
         )
       end
     else
-      self.collection = Form_COUNT.times.map{ Rod.new }
+      self.collection = FORM_COUNT.times.map{ Rod.new }
     end
   end
   
+  # レコードが存在するか確認するメソッド
   def persisted?
     false
   end
