@@ -5,26 +5,25 @@
 
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
-    <%= form_with(model: @rods, url: user_rods_path(current_user), method: :post, local: true) do |f| %>
-      <%= render 'shared/model_error_messages', model: @rods %>   
+    <%= form_with(model: @form, url: user_rods_path(current_user), method: :post) do |fb| %>
+      <%= render 'shared/model_error_messages', model: @form %>   
       <table class="table table-bordered">
         <tbody class="bulk-registration-form">
         <tr>
           <th>ロッド</th>
           <th>メーカー</th>
         </tr>
-        <% @rods.collection.each do |rod| %>
-          <%= fields_for 'rods[]', rod do |i| %>
-          <tr class="item">
-            <td><%= i.text_field :rod, placeholder: "例.19 エクスセンス ジェノス S110MHR", class: "form-control" %></td>
-            <td><%= i.text_field :rod_maker, placeholder: "例.シマノ", class: "form-control" %></td>
-          </tr>
+          <%= fb.fields_for :rods do |field| %>
+            <div class="field">
+              <td><%= field.text_field :rod, placeholder: "例.19 エクスセンス ジェノス S110MHR", class: "form-control" %></td>
+              <td><%= field.text_field :rod_maker, placeholder: "例.シマノ", class: "form-control" %></td>
+            </div>
           <% end %>
-        <% end %>
+        </tr>
         </tbody>
       </table>
       <div class="center">
-        <%= f.submit "一括登録", class: "btn btn-primary" %>
+        <%= fb.submit "一括登録", class: "btn btn-primary" %>
         <%= link_to "戻る", user_rods_path(current_user), class: "btn btn-default" %>
       </div>
     <% end %>

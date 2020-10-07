@@ -9,12 +9,12 @@ class RodsController < ApplicationController
   end
 
   def new
-    @rods = RodCollection.new
+    
   end
 
   def create
-    @rods = RodCollection.new(rods_params)
-    if @rods.save
+    
+    if @form.save
       flash[:success] = "ロッドを登録しました。"
       redirect_to user_rods_url(current_user)
     else
@@ -30,12 +30,6 @@ class RodsController < ApplicationController
     end
 
     # ストロングパラメーター
-    def rod_collection_params
-      params
-        .require(:rod_collection)
-        .permit(rods_attributes: :rods)
-    end
-
     def rods_params
       params.require(:rods)
     end
