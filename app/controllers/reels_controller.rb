@@ -5,17 +5,17 @@ class ReelsController < ApplicationController
   before_action :correct_user_id
 
   def index
-    @reels = current_user.reels
+    @reels = current_user.reels.paginate(page: params[:page], per_page: 20)
   end
 
   def new
-    @form = Form::ReelCollection.new
+    @reel = Reel.new
   end
 
   def create
-    @form = Form::ReelCollection.new(reel_collection_params)
-    if @form.save
-      flash[:success] = "#{@form.target_rods.size}件のリールを登録しました。"
+    @reel = @user.reels.build(reel_params)
+    if @reel.save
+      flash[:success] = "新規登録しました。"
       redirect_to user_reels_path(current_user)
     else
       flash.now[:danger] = "新規登録に失敗しました。"
@@ -26,13 +26,12 @@ class ReelsController < ApplicationController
   private
     # beforeアクション
     def set_reel
-      @rod = Reel.find(params[:id])
+      @reel = Reel.find(params[:id])
     end
 
     # ストロングパラメーター
-    def reel_collection_params
-      params
-        .require(:form_reel_collection)
-        .permit(reels_attributes: :reel)
+    def reel_params
+      params.require(:reel).permit(:reel_name, :reel_maker, :user_id)
     end
+    
 end

@@ -1,28 +1,27 @@
-<% provide(:title, 'Rod regist') %>
-<% provide(:class_text, 'ロッド') %>
+<% provide(:title, 'Reel regist') %>
+<% provide(:class_text, 'リール') %>
 <% provide(:button_text, '新規登録') %>
 <h1>リール新規登録</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @form, url: user_reels_path(current_user), method: :post, local: true) do |f| %>
-      <%= render 'shared/form_error_messages', model: @form %>   
+  <div class="col-md-10 col-md-offset-2">
+    <%= form_with(model: @reel, url: user_reels_path(current_user), method: :post, local: true) do |f| %>
+      <%= render 'shared/model_error_messages', model: @reel %>   
       <table class="table table-bordered">
         <tbody class="bulk-registration-form">
         <tr>
           <th>リール</th>
           <th>メーカー</th>
         </tr>
-        <%= f.fields_for :rods do |i| %>
-        <tr class="item">
-          <td><%= i.text_field :reel, placeholder: "例.ステラ  C3000", class: "form-control" %></td>
-          <td><%= i.text_field :reel_maker, placeholder: "例.シマノ", class: "form-control" %></td>
+          <div class="field">
+            <td><%= f.text_field :reel_name, placeholder: "例.19 ステラ 2500s", class: "form-control" %></td>
+            <td><%= f.text_field :reel_maker, placeholder: "例.シマノ", class: "form-control" %></td>
+          </div>
         </tr>
-        <% end %>
         </tbody>
       </table>
       <div class="center">
-        <%= f.submit "一括登録", class: "btn btn-primary" %>
+        <%= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:button_text)}" %>
         <%= link_to "戻る", user_reels_path(current_user), class: "btn btn-default" %>
       </div>
     <% end %>

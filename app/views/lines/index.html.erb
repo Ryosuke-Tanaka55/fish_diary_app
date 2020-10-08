@@ -10,14 +10,15 @@
     <table class="table table-hover" id="table-lines">
       <thead>
         <tr>
-          <th><%= Line.human_attribute_name :line %></th>
+          <th><%= Line.human_attribute_name :line_name %></th>
           <th><%= Line.human_attribute_name :line_maker %></th>
         </tr>
       </thead>
     
       <% @lines.each do |line| %>
         <tr>
-          <td><%= line.line %></td>
+          <td><%= line.line_name %></td>
+          <td><%= line.line_maker %></td>
           <td align="center">
             <%= link_to "編集", edit_user_line_path(current_user, line.id), class: "btn btn btn-success" %>
             <%= link_to "削除", user_line_path(current_user, line.id), method: :delete, 

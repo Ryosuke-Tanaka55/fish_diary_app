@@ -1,6 +1,6 @@
 class Rig < ApplicationRecord
   belongs_to :user
-  validates :rig, presence: true, length: { in: 2..50 }, allow_nil: true
+  validates :rig, presence: true, uniqueness: true
 
   # リグ選択
   # enum rig: {

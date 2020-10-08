@@ -1,5 +1,5 @@
 class Reel < ApplicationRecord
   belongs_to :user
 
-  validates :reel, presence: true, uniqueness: true
+  validates :reel_name, presence: true, uniqueness: true
 end

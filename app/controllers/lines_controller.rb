@@ -5,17 +5,17 @@ class LinesController < ApplicationController
   before_action :correct_user_id
 
   def index
-    @lines = current_user.lines
+    @lines = current_user.lines.paginate(page: params[:page], per_page: 20)
   end
 
   def new
-    @form = Form::LineCollection.new
+    @line = Line.new
   end
 
   def create
-    @form = Form::LineCollection.new(line_collection_params)
-    if @form.save
-      flash[:success] = "#{@form.target_lines.size}件のロッドを登録しました。"
+    @line = @user.lines.build(line_params)
+    if @line.save
+      flash[:success] = "新規登録しました。"
       redirect_to user_lines_path(current_user)
     else
       flash.now[:danger] = "新規登録に失敗しました。"
@@ -26,13 +26,12 @@ class LinesController < ApplicationController
   private
     # beforeアクション
     def set_line
-      @rod = Line.find(params[:id])
+      @line = Line.find(params[:id])
     end
 
     # ストロングパラメーター
-    def rod_collection_params
-      params
-        .require(:form_line_collection)
-        .permit(lines_attributes: :line)
+    def line_params
+      params.require(:line).permit(:line_name, :line_maker, :user_id)
     end
+    
 end

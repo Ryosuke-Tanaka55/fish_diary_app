@@ -1,31 +1,28 @@
 <% provide(:title, 'Rod regist') %>
-<% provide(:class_text, 'ロッド') %>
 <% provide(:button_text, '新規登録') %>
 <h1>ロッド新規登録</h1>
 
-<div class="row">
-  <div class="col-md-10 col-md-offset-2">
-    <%= form_with(model: @form, url: user_rods_path(current_user), method: :post) do |fb| %>
-      <%= render 'shared/model_error_messages', model: @form %>   
-      <table class="table table-bordered">
-        <tbody class="bulk-registration-form">
-        <tr>
-          <th>ロッド</th>
-          <th>メーカー</th>
-        </tr>
-          <%= fb.fields_for :rods do |field| %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <%= form_with(model: @rod, url: user_rods_path(current_user), method: :post, local: true) do |f| %>
+        <%= render 'shared/model_error_messages', model: @rod %>   
+        <table class="table table-bordered">
+          <tbody class="bulk-registration-form">
+          <tr>
+            <th>ロッド</th>
+            <th>メーカー</th>
+          </tr>
             <div class="field">
-              <td><%= field.text_field :rod, placeholder: "例.19 エクスセンス ジェノス S110MHR", class: "form-control" %></td>
-              <td><%= field.text_field :rod_maker, placeholder: "例.シマノ", class: "form-control" %></td>
+              <td><%= f.text_field :rod_name, placeholder: "例.19 エクスセンス ジェノス S110MHR", class: "form-control" %></td>
+              <td><%= f.text_field :rod_maker, placeholder: "例.シマノ", class: "form-control" %></td>
             </div>
-          <% end %>
-        </tr>
-        </tbody>
-      </table>
-      <div class="center">
-        <%= fb.submit "一括登録", class: "btn btn-primary" %>
-        <%= link_to "戻る", user_rods_path(current_user), class: "btn btn-default" %>
-      </div>
-    <% end %>
+          </tr>
+          </tbody>
+        </table>
+        <div class="center">
+          <%= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:button_text)}" %>
+          <%= link_to "戻る", user_rods_path(current_user), class: "btn btn-default" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>

@@ -1,0 +1,26 @@
+<% provide(:title, 'Color regist') %>
+<% provide(:class_text, 'カラー') %>
+<% provide(:button_text, '新規登録') %>
+<h1>カラー新規登録</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-2">
+    <%= form_with(model: @color, url: user_colors_path(current_user), method: :post, local: true) do |f| %>
+      <%= render 'shared/model_error_messages', model: @color %>   
+      <table class="table table-bordered">
+        <tbody class="bulk-registration-form">
+        <tr>
+          <th>カラー</th>
+        </tr>
+          <div class="field">
+            <td><%= f.text_field :color_name, placeholder: "例.ホットタイガー", class: "form-control" %></td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="center">
+        <%= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:button_text)}" %>
+        <%= link_to "戻る", user_colors_path(current_user), class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>

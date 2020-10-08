@@ -1,0 +1,36 @@
+<% provide(:title, 'リーダー一覧') %>
+<% provide(:class_text, "lure--index") %>
+<% provide(:button_text, "編集") %>
+
+<h1><%= current_user.name %>のリーダー一覧</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+  <%= will_paginate %>
+    <%= link_to "リーダー新規登録", new_user_lure_path(current_user), class: "btn btn-lg btn-primary pull-right" %>
+    <table class="table table-hover" id="table-lures">
+      <thead>
+        <tr>
+          <th><%= Lure.human_attribute_name :lure_name %></th>
+          <th><%= Lure.human_attribute_name :lure_maker %></th>
+        </tr>
+      </thead>
+    
+      <% @lures.each do |lure| %>
+        <tr>
+          <td><%= lure.lure_name %></td>
+          <td><%= lure.lure_maker %></td>
+          <td align="center">
+            <%= link_to "編集", edit_user_lure_path(current_user, lure.id), class: "btn btn btn-success" %>
+            <%= link_to "削除", user_lure_path(current_user, lure.id), method: :delete, 
+              data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <%= will_paginate %>
+    <div class="center">
+      <%= link_to "戻る", tackle_user_path(current_user), class: "btn btn-default" %>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@ class RigsController < ApplicationController
   before_action :correct_user_id
 
   def index
-    @rigs = current_user.rigs
+    @rigs = current_user.rigs.paginate(page: params[:page], per_page: 20)
   end
 
   def new

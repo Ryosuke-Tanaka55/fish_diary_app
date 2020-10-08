@@ -1,5 +1,5 @@
 class Hook < ApplicationRecord
   belongs_to :user
 
-  validastes :hook, presence: true, uniqueness: true
+  validates :hook_name, presence: true, uniqueness: true
 end
