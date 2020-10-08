@@ -24,10 +24,6 @@ class RodsController < ApplicationController
   end
 
   def edit
-    if @user != current_user 
-      flash[:danger] = "他ユーザーのロッド編集はできません。"
-      redirect_to user_rods_url @user
-    end
   end
   
   def update
