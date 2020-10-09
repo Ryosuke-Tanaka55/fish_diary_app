@@ -16,7 +16,7 @@
             <%= render 'shared/model_error_messages', model: @rod %>
 
             <%= f.label :rod_name, class: "label-#{yield(:class_text)}" %>
-            <p><%= @rod.rod_name %></p>
+            <%= f.text_field :rod_name, class: "form-control" %>
 
             <%= f.label :rod_maker, class: "label-#{yield(:class_text)}" %>
             <%= f.text_field :rod_maker, class: "form-control" %>
