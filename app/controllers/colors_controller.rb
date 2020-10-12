@@ -24,6 +24,26 @@ class ColorsController < ApplicationController
     end
   end
 
+  def edit
+  end
+  
+  def update
+    if @color.update_attributes(color_params)
+      flash[:success] = "カラー情報を更新しました。"
+      redirect_to user_colors_url @user
+    else
+      flash.now[:danger] = "カラー更新に失敗しました。"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @color.destroy
+    flash[:success] = "カラーを削除しました。"
+    redirect_to user_colors_url @user
+  end
+
+
   private
     # beforeアクション
     def set_color

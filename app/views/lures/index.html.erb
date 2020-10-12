@@ -21,7 +21,7 @@
           <td><%= lure.lure_name %></td>
           <td><%= lure.lure_maker %></td>
           <td align="center">
-            <%= link_to "編集", edit_user_lure_path(current_user, lure.id), class: "btn btn btn-success" %>
+            <%= link_to "編集", edit_user_lure_path(current_user, lure.id), remote: true, class: "btn btn btn-success" %>
             <%= link_to "削除", user_lure_path(current_user, lure.id), method: :delete, 
               data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
           </td>
@@ -34,3 +34,6 @@
     </div>
   </div>
 </div>
+
+<!--モーダルウインドウ表示-->
+<div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

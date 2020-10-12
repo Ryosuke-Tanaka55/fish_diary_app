@@ -28,7 +28,10 @@
       <% end %>
     </table>
     <div class="center">
-      <%= link_to "戻る", tackle_user_path(current_user), class: "btn btn-default" %>
+      <%= link_to "戻る", tackle_user_path(current_user), remote: true, class: "btn btn-default" %>
     </div>
   </div>
 </div>
+
+<!--モーダルウインドウ表示-->
+<div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

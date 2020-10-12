@@ -24,6 +24,26 @@ class LeadersController < ApplicationController
     end
   end
 
+  def edit
+  end
+  
+  def update
+    if @reader.update_attributes(reader_params)
+      flash[:success] = "リーダー情報を更新しました。"
+      redirect_to user_readers_url @user
+    else
+      flash.now[:danger] = "リーダー更新に失敗しました。"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @reader.destroy
+    flash[:success] = "リーダーを削除しました。"
+    redirect_to user_readers_url @user
+  end
+
+
   private
     # beforeアクション
     def set_leader

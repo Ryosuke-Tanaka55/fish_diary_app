@@ -19,7 +19,7 @@
         <tr>
           <td><%= bait.bait_name %></td>
           <td align="center">
-            <%= link_to "編集", edit_user_bait_path(current_user, bait.id), class: "btn btn btn-success" %>
+            <%= link_to "編集", edit_user_bait_path(current_user, bait.id), remote: true, class: "btn btn btn-success" %>
             <%= link_to "削除", user_bait_path(current_user, bait.id), method: :delete, 
               data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
           </td>
@@ -32,3 +32,6 @@
     </div>
   </div>
 </div>
+
+<!--モーダルウインドウ表示-->
+<div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

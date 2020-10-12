@@ -23,6 +23,46 @@ class LinesController < ApplicationController
     end
   end
 
+  def edit
+  end
+  
+  def update
+    if @line.update_attributes(line_params)
+      flash[:success] = "ライン情報を更新しました。"
+      redirect_to user_lines_url @user
+    else
+      flash.now[:danger] = "ライン更新に失敗しました。"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @line.destroy
+    flash[:success] = "ラインを削除しました。"
+    redirect_to user_lines_url @user
+  end
+
+  def edit
+  end
+  
+  def update
+    if @line.update_attributes(line_params)
+      flash[:success] = "ライン情報を更新しました。"
+      redirect_to user_lines_url @user
+    else
+      flash.now[:danger] = "ライン更新に失敗しました。"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @line.destroy
+    flash[:success] = "ラインを削除しました。"
+    redirect_to user_lines_url @user
+  end
+
+
+
   private
     # beforeアクション
     def set_line

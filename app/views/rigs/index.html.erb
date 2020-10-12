@@ -19,7 +19,7 @@
           <td><%= rig.rig_name %></td>
           <td align="center">
             <%= link_to "編集", "#", class: "btn btn btn-success" %>
-            <%= link_to "削除", user_rig_path(current_user, rig.id), method: :delete, 
+            <%= link_to "削除", user_rig_path(current_user, rig.id), remote: true, method: :delete, 
               data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
           </td>
         </tr>
@@ -30,3 +30,6 @@
     </div>
   </div>
 </div>
+
+<!--モーダルウインドウ表示-->
+<div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

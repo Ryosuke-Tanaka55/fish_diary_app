@@ -19,7 +19,7 @@
         <tr>
           <td><%= color.color_name %></td>
           <td align="center">
-            <%= link_to "編集", edit_user_color_path(current_user, color.id), class: "btn btn btn-success" %>
+            <%= link_to "編集", edit_user_color_path(current_user, color.id), remote: true, class: "btn btn btn-success" %>
             <%= link_to "削除", user_color_path(current_user, color.id), method: :delete, 
               data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
           </td>
@@ -32,3 +32,6 @@
     </div>
   </div>
 </div>
+
+<!--モーダルウインドウ表示-->
+<div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

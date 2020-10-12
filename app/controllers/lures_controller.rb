@@ -23,7 +23,25 @@ class LuresController < ApplicationController
       render:new
     end
   end
+  def edit
+  end
   
+  def update
+    if @lure.update_attributes(lure_params)
+      flash[:success] = "ルアー情報を更新しました。"
+      redirect_to user_lures_url @user
+    else
+      flash.now[:danger] = "ルアー更新に失敗しました。"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @lure.destroy
+    flash[:success] = "ルアーを削除しました。"
+    redirect_to user_lures_url @user
+  end
+
     private
       # beforeアクション
       def set_lure

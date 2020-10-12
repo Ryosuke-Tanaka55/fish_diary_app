@@ -23,7 +23,26 @@ class HooksController < ApplicationController
       render:new
     end
   end
+
+  def edit
+  end
   
+  def update
+    if @hook.update_attributes(hook_params)
+      flash[:success] = "フック情報を更新しました。"
+      redirect_to user_hooks_url @user
+    else
+      flash.now[:danger] = "フック更新に失敗しました。"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @hook.destroy
+    flash[:success] = "フックを削除しました。"
+    redirect_to user_hooks_url @user
+  end
+
     private
       # beforeアクション
       def set_hook

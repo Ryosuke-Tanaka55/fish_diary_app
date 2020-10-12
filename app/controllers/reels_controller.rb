@@ -23,6 +23,26 @@ class ReelsController < ApplicationController
     end
   end
 
+  def edit
+  end
+  
+  def update
+    if @reel.update_attributes(reel_params)
+      flash[:success] = "リール情報を更新しました。"
+      redirect_to user_reels_url @user
+    else
+      flash.now[:danger] = "リール更新に失敗しました。"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @reel.destroy
+    flash[:success] = "リールを削除しました。"
+    redirect_to user_reels_url @user
+  end
+
+
   private
     # beforeアクション
     def set_reel

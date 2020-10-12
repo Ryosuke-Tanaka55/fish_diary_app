@@ -23,6 +23,26 @@ class BaitsController < ApplicationController
       render:new
     end
   end
+  
+  def edit
+  end
+  
+  def update
+    if @bait.update_attributes(bait_params)
+      flash[:success] = "エサ情報を更新しました。"
+      redirect_to user_baits_url @user
+    else
+      flash.now[:danger] = "エサ更新に失敗しました。"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @bait.destroy
+    flash[:success] = "エサを削除しました。"
+    redirect_to user_baits_url @user
+  end
+
 
   private
     # beforeアクション
