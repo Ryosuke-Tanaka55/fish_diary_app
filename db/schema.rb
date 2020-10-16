@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_26_061730) do
+ActiveRecord::Schema.define(version: 2020_10_16_032150) do
 
   create_table "baits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "bait_name"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2020_09_26_061730) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_colors_on_user_id"
+  end
+
+  create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "question_title"
+    t.text "question_detail"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "diaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -157,6 +166,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_061730) do
 
   add_foreign_key "baits", "users"
   add_foreign_key "colors", "users"
+  add_foreign_key "contacts", "users"
   add_foreign_key "diaries", "users"
   add_foreign_key "environments", "diaries"
   add_foreign_key "genres", "users"

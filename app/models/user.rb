@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :baits, dependent: :destroy
   has_many :hooks, dependent: :destroy
   has_many :genres, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   # 「remember_token」という仮想の属性を作成。
   attr_accessor :remember_token

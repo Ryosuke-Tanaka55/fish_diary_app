@@ -65,7 +65,7 @@
         <% else %>
           <li><%= link_to "ログイン", login_path %></li>
         <% end %>
-          <li><%= link_to "お問い合わせ", "#" %></li>
+          <li><%= link_to "お問い合わせ", new_user_contact_path(current_user) %></li>
         </ul>  
       </ul>
     </nav>

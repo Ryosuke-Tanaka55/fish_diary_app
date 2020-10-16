@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
     member do
       get 'tackle'
     end
-      # リグ・タックル
+      # リグ・タックル・お問い合わせ
       resources :rigs, :except => :show
       resources :rods, :except => :show
       resources :reels, :except => :show
@@ -21,5 +22,6 @@ Rails.application.routes.draw do
       resources :colors, :except => :show
       resources :baits, :except => :show
       resources :hooks, :except => :show
+      resources :contacts, only: [:index, :new, :create]
   end
 end
