@@ -19,4 +19,5 @@ require('bootstrap/dist/js/bootstrap.min.js')
 // const imagePath = (name) => images(name, true)
 
 import 'bootstrap'
-import '../stylesheets/application.scss'
+import '../stylesheets/application'
+import '../stylesheets/custom'
