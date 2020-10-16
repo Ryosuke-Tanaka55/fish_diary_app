@@ -9,26 +9,26 @@
       <%= render 'shared/model_error_messages', model: f.object %>
       
       <%= f.label :name %>
-      <%= f.label :必須, class: "form-require" %>
+      <span class="text-danger"> (必須)</span>
       <%= f.text_field :name, class: "form-control" %>
 
       <%= f.label :email %>
-      <%= f.label :必須, class: "form-require" %>
+      <span class="text-danger"> (必須)</span>
       <%= f.email_field :email, class: "form-control" %>
 
       <%= f.label :tel %>
       <%= f.telephone_field :tel, class: "form-control" %>
 
       <%= f.label :prefecture %>
-      <%= f.label :必須, class: "form-require" %>
-      <%= f.select :prefecture, User.prefectures.keys, { prompt: "選択してください" }, class: "btn form-control prefecture-select" %>
+      <span class="text-danger"> (必須)</span>
+      <%= f.select :prefecture, User.prefectures.keys, { prompt: "選択してください" }, class: "form-control prefecture-select" %>
 
       <%= f.label :password %>
-      <%= f.label :必須, class: "form-require" %>
+      <span class="text-danger"> (必須)</span>
       <%= f.password_field :password, class: "form-control" %>
 
       <%= f.label :password_confirmation, "パスワード確認" %>
-      <%= f.label :必須, class: "form-require" %>
+      <span class="text-danger"> (必須)</span>
       <%= f.password_field :password_confirmation, class: "form-control" %>
 
       <%= f.submit  yield(:button_text), class: "btn btn-primary btn-block btn-user--edit" %>
