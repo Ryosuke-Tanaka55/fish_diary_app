@@ -28,15 +28,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_032150) do
     t.index ["user_id"], name: "index_colors_on_user_id"
   end
 
-  create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.string "question_title"
-    t.text "question_detail"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_contacts_on_user_id"
-  end
-
   create_table "diaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "title"
     t.datetime "fish_at"
@@ -91,6 +82,15 @@ ActiveRecord::Schema.define(version: 2020_10_16_032150) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_hooks_on_user_id"
+  end
+
+  create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "inquiry_title"
+    t.text "inquiry_detail"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_inquiries_on_user_id"
   end
 
   create_table "leaders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -166,11 +166,11 @@ ActiveRecord::Schema.define(version: 2020_10_16_032150) do
 
   add_foreign_key "baits", "users"
   add_foreign_key "colors", "users"
-  add_foreign_key "contacts", "users"
   add_foreign_key "diaries", "users"
   add_foreign_key "environments", "diaries"
   add_foreign_key "genres", "users"
   add_foreign_key "hooks", "users"
+  add_foreign_key "inquiries", "users"
   add_foreign_key "leaders", "users"
   add_foreign_key "lines", "users"
   add_foreign_key "lures", "users"

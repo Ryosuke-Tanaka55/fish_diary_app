@@ -22,6 +22,6 @@ Rails.application.routes.draw do
       resources :colors, :except => :show
       resources :baits, :except => :show
       resources :hooks, :except => :show
-      resources :contacts, only: [:index, :new, :create]
+      resources :inquiries, only: [:index, :new, :create]
   end
 end

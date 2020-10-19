@@ -67,6 +67,6 @@ ja:
           hook_maker: メーカー
         genre:
           genre_name: ジャンル
-        contact:
-          question_title: お問い合わせ概要
-          question_detail: お問い合わせ内容
+        inquiry:
+          inquiry_title: お問い合わせ概要
+          inquiry_detail: お問い合わせ内容

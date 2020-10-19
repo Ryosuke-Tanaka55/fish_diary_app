@@ -1,0 +1,25 @@
+<% provide(:title, 'Inquiry') %>
+<% provide(:class_text, 'inquiry') %>
+<% provide(:button_text, 'お問い合わせ送信') %>
+<h1>お問い合わせフォーム</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-2">
+    <%= form_with(model: @inquiry, url: user_inquiries_path(current_user), local: true) do |f| %>
+      <%= render 'shared/model_error_messages', model: @inquiry %>
+
+      <%= f.label :inquiry_title, class: "label-#{yield(:class_text)}" %>
+      <span class="text-danger"> (必須)</span>
+      <%= f.text_field :inquiry_title, placeholder: "お問い合わせの概要等を記載してください。", class: "form-control" %>
+
+      <%= f.label :inquiry_detail, class: "label-#{yield(:class_text)}" %>
+      <span class="text-danger"> (必須)</span>
+      <%= f.text_area :inquiry_detail, placeholder: "詳細内容を記載してください。", class: "form-control", size: "40x10" %>
+
+      <div class="button">
+        <%= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:button_text)}" %>
+        <%= link_to "戻る", user_path(current_user), class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>
