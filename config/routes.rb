@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  resources :inquiries
 
   resources :users do
     member do
@@ -22,6 +23,5 @@ Rails.application.routes.draw do
       resources :colors, :except => :show
       resources :baits, :except => :show
       resources :hooks, :except => :show
-      resources :inquiries, only: [:index, :new, :create]
   end
 end

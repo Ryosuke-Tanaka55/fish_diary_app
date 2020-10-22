@@ -68,5 +68,7 @@ ja:
         genre:
           genre_name: ジャンル
         inquiry:
+          name: 名前
+          email: メールアドレス
           inquiry_title: お問い合わせ概要
           inquiry_detail: お問い合わせ内容

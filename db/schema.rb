@@ -87,10 +87,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_032150) do
   create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "inquiry_title"
     t.text "inquiry_detail"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_inquiries_on_user_id"
   end
 
   create_table "leaders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -170,7 +168,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_032150) do
   add_foreign_key "environments", "diaries"
   add_foreign_key "genres", "users"
   add_foreign_key "hooks", "users"
-  add_foreign_key "inquiries", "users"
   add_foreign_key "leaders", "users"
   add_foreign_key "lines", "users"
   add_foreign_key "lures", "users"

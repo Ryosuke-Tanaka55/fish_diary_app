@@ -62,10 +62,17 @@
                 <%= link_to  "ログアウト", logout_path, method: :delete %>
               </li>
             </ul>
+            <!-- 管理者の場合 -->
+            <% if current_user.admin? %>
+              <li><%= link_to "お問い合わせ一覧", inquiries_path %>
+            <% else %> 
+            <!-- 一般ユーザーの場合 -->
+              <li><%= link_to "お問い合わせ", new_inquiry_path %></li>
+            <% end %>
         <% else %>
           <li><%= link_to "ログイン", login_path %></li>
+          <li><%= link_to "お問い合わせ", new_inquiry_path %></li>
         <% end %>
-          <li><%= link_to "お問い合わせ", new_user_inquiry_path(current_user) if logged_in? %></li>
         </ul>  
       </ul>
     </nav>

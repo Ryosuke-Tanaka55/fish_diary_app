@@ -1,0 +1,42 @@
+<%= provide(:title, 'Inquires') %>
+
+<h1><%= @inquery.name %>さんからのお問い合わせ詳細</h1>
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-bordered table-hover" id="fish-diary-index">
+      <tr>
+        <th><%= Inquery.human_attribute_name :name %></th>
+          <td class="col-md-9"><%= @inquery.name %></td>
+      </tr>
+      <tr>
+        <th><%= Inquery.human_attribute_name :email %></th>
+          <td class="col-md-9"><%= @inquery.email %></td>
+      </tr>
+      <tr>
+        <th><%= Inquery.human_attribute_name :inquery_title %></th>
+          <td class="col-md-9"><%= @inquery.inquery_title %></td>
+      </tr>
+      <tr>
+        <th><%= Inquery.human_attribute_name :inquery_title %></th>
+          <td class="col-md-9"><%= @inquery.inquery_title %></td>
+      </tr>
+      <tr>
+        <th class="col-md-3"><%= Inquery.human_attribute_name :created_at %></th>
+          <td class="col-md-9"><%= l(@task.created_at, format: :long) %></td>
+      </tr>
+      <tr>
+        <th><%= Inquery.human_attribute_name :inquery_detail %></th>
+          <td class="col-md-9">
+            <%= simple_format  text_url_to_link(h(@inquery.inquery_detail)).html_safe %>
+          </td>
+      </tr>
+      <tr>
+        <td><%=  %></td>
+      </tr>
+    </table>
+    <tr>
+      <td>
+        <%= link_to "削除", user_task_path(@user.id, @task.id), method: :delete, 
+            data: { confirm: "削除してよろしいですか？" }, class: "btn  btn-lg btn-danger" %>
+      </td>
+    </tr>
+  </div>

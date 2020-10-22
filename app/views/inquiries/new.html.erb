@@ -5,12 +5,25 @@
 
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
-    <%= form_with(model: @inquiry, url: user_inquiries_path(current_user), local: true) do |f| %>
+    <%= form_with(model: @inquiry, url: inquiries_path, local: true) do |f| %>
       <%= render 'shared/model_error_messages', model: @inquiry %>
+      <% if logged_in? %>
+        <!- ログインしているユーザーの名前とメールアドレスを渡す-->
+        <%= f.hidden_field :name, :value => current_user.name %>
+        <%= f.hidden_field :email, :value => current_user.email %>
+      <% else %>
+        <%= f.label :name, class: "label-#{yield(:class_text)}" %>
+        <span class="text-danger"> (必須)</span>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :email, class: "label-#{yield(:class_text)}" %>
+        <span class="text-danger"> (必須)</span>
+        <%= f.email_field :email, class: "form-control" %>
+      <% end %>
 
       <%= f.label :inquiry_title, class: "label-#{yield(:class_text)}" %>
       <span class="text-danger"> (必須)</span>
-      <%= f.text_field :inquiry_title, placeholder: "お問い合わせの概要等を記載してください。", class: "form-control" %>
+      <%= f.text_field :inquiry_title, placeholder: "お問い合わせの概要を記載してください。", class: "form-control" %>
 
       <%= f.label :inquiry_detail, class: "label-#{yield(:class_text)}" %>
       <span class="text-danger"> (必須)</span>
@@ -18,7 +31,7 @@
 
       <div class="button">
         <%= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:button_text)}" %>
-        <%= link_to "戻る", user_path(current_user), class: "btn btn-default" %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-default" %>
       </div>
     <% end %>
   </div>
