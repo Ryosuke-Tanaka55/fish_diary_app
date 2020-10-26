@@ -1,0 +1,25 @@
+<% provide(:title, 'All Inquiries') %>
+
+<h1>お問い合わせ一覧</h1>
+<div class="col-md-10 col-md-offset-1" >
+  <%= will_paginate @inquiries %>
+  <table class="table table-condensed table-hover" id="tabel-inquiries">
+    <thead>
+      <tr>
+        <th><%= Inquiry.human_attribute_name :inquiry_title %>
+      </tr>
+    </thead>
+
+    <% @inquiries.each do |inquiry| %>
+      <tr>
+        <td><%= link_to inquiry.inquiry_title, inquiry %></td>
+        <td>
+          <%= link_to "削除", inquiry, method: :delete,
+            data: { confirm: "削除してもよろしいですか？" },
+            class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= will_paginate @inquiries %>
+</div>

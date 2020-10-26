@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @inquiry.name %>様、お問い合わせいただきありがとうございます。</h1>
+      <p>
+        お問い合わせ内容を確認に、ご登録いただきましたメールアドレスに回答を送信いたします。<br>
+        回答を送信するまでしばらくお時間いただけますでしょうか。
+      </p>
+
+    <h2>以下内容を受け付けました。</h2>
+      <ul>
+        <li>お問い合わせ概要：<%= @inquiry.inquiry.title %></li>
+        <li>
+          お問い合わせ内容：<%= simple_format(@inquiry.inquiry_detail) %>
+        </li>
+      </ul>
+  </body>
+</html>

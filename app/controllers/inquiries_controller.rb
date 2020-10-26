@@ -2,7 +2,7 @@ class InquiriesController < ApplicationController
   before_action :admin_user, only: [:index, :show, :destroy]
 
   def index
-    @inquires = Inquiry.all.paginate(page: params[:page], per_page: 20)
+    @inquiries = Inquiry.paginate(page: params[:page], per_page: 20)
   end
 
   def show
@@ -14,8 +14,10 @@ class InquiriesController < ApplicationController
   end
 
   def create
-    @inquiry = Inquery.new(inquiry_params)
+    @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
+      # 保存後にInquiryMailerを使ってお問い合わせメールを送信
+      InquiryMailer.inquiry_mail(@inquiry).deliver_now
       flash[:success] = "お問い合わせを受け付けました。"
       redirect_to user_url(current_user)
     else
@@ -26,7 +28,7 @@ class InquiriesController < ApplicationController
 
   private
     def inquiry_params
-      params.require(:inquiry).permit(:email, :inquiry_title, :inquiry_detail)
+      params.require(:inquiry).permit(:name, :email, :inquiry_title, :inquiry_detail)
     end
 
 end
